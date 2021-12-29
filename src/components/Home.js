@@ -1,6 +1,6 @@
 function Home({ trainers }) {
 
-    const trainerInfo = trainers.map((tr) => <li>
+    const trainerInfo = trainers.map((tr) => <li key={trainers.id}>
         {tr.name} || {tr.accepting_clients ? 'Currently Accepting Clients' : 'Not Accepting New Clients' }
     </li>)
 

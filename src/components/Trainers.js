@@ -2,7 +2,7 @@ import TrainerCard from "./TrainerCard";
 
 function Trainers({ trainers, updateClients, onDelete }) {
 
-    const trainerInfo = trainers.map((tr) => <TrainerCard trainer={tr} updateClients={updateClients} onDelete={onDelete}/>)
+    const trainerInfo = trainers.map((tr) => <TrainerCard key={tr.id} trainer={tr} updateClients={updateClients} onDelete={onDelete}/>)
 
     return(
         <div>
