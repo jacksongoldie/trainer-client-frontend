@@ -7,6 +7,8 @@ function TrainerCard({trainer, updateClients, onDelete }){
     const [addingClient, setAddingClient] = useState(false);
 
     function handleAddClientFromTrainerCard(){
+        addingClient ? 
+        console.log('inside done adding') :
         console.log('inside addClient')
         setAddingClient((mUV) => !mUV)
     }
@@ -17,18 +19,26 @@ function TrainerCard({trainer, updateClients, onDelete }){
             return clients;
         }
         else{
-            return "no clients"
+            return "no active clients"
         }
+    }
+
+    function acceptingClients(){
+        if (trainer.accepting_clients === false){
+            return "Trainer is not accepting new clients"
+        }
+        else{
+            return addingClient ?
+                <AddClient id={trainer.id} updateClients={updateClients} handleAddClientFromTrainerCard={handleAddClientFromTrainerCard} />
+                :
+                <button onClick={handleAddClientFromTrainerCard}> + Add Client </button>
+            }
     }
     
     return(
         <div>
             <h1>{trainer.name}</h1>
-            {addingClient ?
-            <AddClient id={trainer.id} updateClients={updateClients}/>
-            :
-            <button onClick={handleAddClientFromTrainerCard}> + Add Client </button> }
-
+            {acceptingClients()}
             <p>Clients:</p>
             {clients()}
 

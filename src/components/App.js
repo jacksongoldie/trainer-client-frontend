@@ -19,10 +19,10 @@ function App() {
 
   function onUpdate(data){
     console.log(data)
+    setRefresh((mUV) => !mUV)
   }
 
   function onDelete(){
-    //LEFT OFF HERE!!!
     setRefresh((mUV) => !mUV)
   }
 

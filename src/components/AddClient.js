@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function AddClient({ id, updateClients }){
+function AddClient({ id, updateClients, handleAddClientFromTrainerCard }){
 
     const blankForm = {
         name: "",
@@ -32,6 +32,7 @@ function AddClient({ id, updateClients }){
     }
     return(
         <div>
+            <button onClick={handleAddClientFromTrainerCard}> - Done Adding </button>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Client first name..." name="name" value={formData.name} onChange={handleOnChange} />
                 <input type="text" placeholder="Client's age" name="age" value={formData.age} onChange={handleOnChange} />
