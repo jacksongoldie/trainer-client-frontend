@@ -2,7 +2,7 @@ import ClientCard from "./ClientCard";
 import AddClient from "./AddClient";
 import { useState } from 'react';
 
-function TrainerCard({trainer, updateClients}){
+function TrainerCard({trainer, updateClients, onDelete }){
 
     const [addingClient, setAddingClient] = useState(false);
 
@@ -13,7 +13,7 @@ function TrainerCard({trainer, updateClients}){
 
     function clients(){
         if (trainer.clients.length > 0 ){
-            const clients = trainer.clients.map((client) => <ClientCard key={client.id} client={client} />)
+            const clients = trainer.clients.map((client) => <ClientCard key={client.id} client={client} onDelete={onDelete} />)
             return clients;
         }
         else{

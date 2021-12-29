@@ -8,17 +8,22 @@ import Clients from './Client';
 function App() {
 
   const [trainers, setTrainers] = useState([]);
-  const [clients, setClients] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:9292/trainers`)
     .then(r => r.json())
     .then((trainers) => setTrainers(trainers))
     .catch(error => window.alert('Is server connected?'))
-  }, [])
+  }, [refresh])
 
-  function onUpdate(){
-    console.log('in on update')
+  function onUpdate(data){
+    console.log(data)
+  }
+
+  function onDelete(){
+    //LEFT OFF HERE!!!
+    setRefresh((mUV) => !mUV)
   }
 
   return (
@@ -28,7 +33,7 @@ function App() {
         <Home trainers={trainers}/> 
       </Route>
       <Route path='/trainers'>
-        <Trainers trainers={trainers} updateClients={onUpdate} />
+        <Trainers trainers={trainers} updateClients={onUpdate} onDelete={onDelete} />
       </Route>
       <Route path='/clients'>
         <Clients />

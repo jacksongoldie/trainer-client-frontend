@@ -28,7 +28,7 @@ function AddClient({ id, updateClients }){
         })
         .then(r => r.json())
         .then((data) => updateClients(data))
-
+        setFormData(blankForm)
     }
     return(
         <div>
