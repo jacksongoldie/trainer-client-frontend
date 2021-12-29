@@ -2,7 +2,7 @@ import ClientCard from "./ClientCard";
 import AddClient from "./AddClient";
 import { useState } from 'react';
 
-function TrainerCard({trainer}){
+function TrainerCard({trainer, updateClients}){
 
     const [addingClient, setAddingClient] = useState(false);
 
@@ -10,8 +10,6 @@ function TrainerCard({trainer}){
         console.log('inside addClient')
         setAddingClient((mUV) => !mUV)
     }
-
-    console.log(addingClient)
 
     function clients(){
         if (trainer.clients.length > 0 ){
@@ -27,7 +25,7 @@ function TrainerCard({trainer}){
         <div>
             <h1>{trainer.name}</h1>
             {addingClient ?
-            <AddClient />
+            <AddClient id={trainer.id} updateClients={updateClients}/>
             :
             <button onClick={handleAddClientFromTrainerCard}> + Add Client </button> }
 

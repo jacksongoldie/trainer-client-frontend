@@ -1,8 +1,8 @@
 import TrainerCard from "./TrainerCard";
 
-function Trainers({ trainers }) {
+function Trainers({ trainers, updateClients }) {
 
-    const trainerInfo = trainers.map((tr) => <TrainerCard trainer={tr} />)
+    const trainerInfo = trainers.map((tr) => <TrainerCard trainer={tr} updateClients={updateClients} />)
 
     return(
         <div>

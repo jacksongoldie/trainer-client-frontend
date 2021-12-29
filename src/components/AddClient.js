@@ -1,21 +1,40 @@
 import { useState } from 'react';
 
-function AddClient(){
+function AddClient({ id, updateClients }){
 
-    const update = {
+    const blankForm = {
         name: "",
         age: ""
     }
-    const [formData, setFormData] = useState(update)
+    const [formData, setFormData] = useState(blankForm)
+
+    function handleOnChange(e){
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setFormData({...formData, [name]: value})
+    }
 
     function handleSubmit(e){
         e.preventDefault();
+        const submitData = {...formData, "trainer_id": id}
         debugger;
+        fetch(`http://localhost:9292/clients`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(submitData)
+        })
+        .then(r => r.json())
+        .then((data) => updateClients(data))
+
     }
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Client first name..." name="name" value="name"/>
+                <input type="text" placeholder="Client first name..." name="name" value={formData.name} onChange={handleOnChange} />
+                <input type="text" placeholder="Client's age" name="age" value={formData.age} onChange={handleOnChange} />
                 <button type="submit">Submit</button>
             </form>
         </div>

@@ -17,6 +17,10 @@ function App() {
     .catch(error => window.alert('Is server connected?'))
   }, [])
 
+  function onUpdate(){
+    console.log('in on update')
+  }
+
   return (
    <div className='App'>
      <Header />
@@ -24,7 +28,7 @@ function App() {
         <Home trainers={trainers}/> 
       </Route>
       <Route path='/trainers'>
-        <Trainers trainers={trainers} />
+        <Trainers trainers={trainers} updateClients={onUpdate} />
       </Route>
       <Route path='/clients'>
         <Clients />
