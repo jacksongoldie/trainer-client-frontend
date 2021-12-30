@@ -1,4 +1,4 @@
-function ClientCard({ client, onDelete }) {
+function ClientCard({ client, onDelete, trainer, renderMe }) {
 
     function handleClientDelete(){
         console.log('inside client delete')
@@ -14,9 +14,12 @@ function ClientCard({ client, onDelete }) {
 
     return(
         <div>
-            <p>{client.name} <button onClick={handleClientDelete}>x</button></p>
-            
-
+            <h2>{client.name} <button onClick={handleClientDelete}>x</button></h2>
+            {renderMe && 
+            <>
+            <p><em>Age: {client.age}</em></p>
+            <p><em>Trainer: {trainer}</em></p>
+            </>}
         </div>
     )
 }
