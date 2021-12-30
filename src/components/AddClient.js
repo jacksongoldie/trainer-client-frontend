@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function AddClient({ id, updateClients, handleAddClientFromTrainerCard }){
+function AddClient({ id, onUpdate, handleAddClientFromTrainerCard }){
 
     const blankForm = {
         name: "",
@@ -27,7 +27,7 @@ function AddClient({ id, updateClients, handleAddClientFromTrainerCard }){
             body: JSON.stringify(submitData)
         })
         .then(r => r.json())
-        .then((data) => updateClients(data))
+        .then((data) => onUpdate(data))
         setFormData(blankForm)
     }
     return(
