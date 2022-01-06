@@ -31,7 +31,7 @@ function TrainerCard({trainer, onUpdate, onDelete }){
             return clients;
         }
         else{
-            return "no active clients"
+            return "currently has no active clients"
         }
     }
 
